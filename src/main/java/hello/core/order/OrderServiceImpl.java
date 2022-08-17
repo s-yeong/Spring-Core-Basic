@@ -36,4 +36,8 @@ public class OrderServiceImpl implements OrderService{
 
     }
 
+    // 싱글톤 테스트용
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }

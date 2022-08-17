@@ -23,16 +23,30 @@ public class AppConfig {
     // OrderService를 쓰는데, 현재 내 애플리케이션에서 memberRepository 쓰는 거, discountPolicy쓰는 거를 가져올 거야
     @Bean   // Spring 컨테이너에 등록!!
     public MemberService memberService(){
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     } // --> 생성자 주입
 
+    // Q. Sington이 깨지는거 아닐까요?
+    // @Bean memberService -> new MemoryMemberRepository()
+    // @Bean orderService -> new MemoryMemberRepository()
+
+    // 예상 ->
+    // call AppConfig.memberService
+    // call AppConfig.memberRepository
+    // call AppConfig.memberRepository
+    // call AppConfig.orderService
+    // call AppConfig.memberRepository
+
     @Bean
     public MemoryMemberRepository memberRepository( ) {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();    // jdbc로 바뀌면 "이 코드"만 바꾸면 된다!!
     }
 
     @Bean
     public OrderService orderService(){
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
