@@ -35,4 +35,12 @@ public class ConfigurationSingletonTest {
 
     }
 
+    @Test
+    void configurationDeep() {
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        // AppConfig도 bean에 등록됨
+        AppConfig bean = ac.getBean(AppConfig.class);
+        System.out.println("bean = " + bean.getClass());
+    }
+
 }
