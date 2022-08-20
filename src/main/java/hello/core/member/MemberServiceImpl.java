@@ -1,5 +1,9 @@
 package hello.core.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl implements MemberService{
 // 구현체 하나만 있을 떄는 인터페이스명 뒤에 Impl이라고 씀
 
@@ -8,6 +12,7 @@ public class MemberServiceImpl implements MemberService{
     // join, findMember를 하려면 리포지토리를 가져와야함
 
     private final MemberRepository memberRepository;
+    @Autowired  // ac.getBean(MemberRepository.class)
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
