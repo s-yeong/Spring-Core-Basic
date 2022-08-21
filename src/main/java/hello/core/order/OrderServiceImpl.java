@@ -6,10 +6,11 @@ import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor    // final이 붙은 것을 가지고 생성자를 만들어줌
+//@RequiredArgsConstructor    // final이 붙은 것을 가지고 생성자를 만들어줌
 public class OrderServiceImpl implements OrderService{
 
     // final을 넣으면 초기값에서 넣거나 아니면 생성자에서만 값을 넣어줄 수 있음
@@ -42,12 +43,15 @@ public class OrderServiceImpl implements OrderService{
 */
 
     // 생성자 호출시점에 딱 1번만 호출, "불변, 필수" 의존관계에 사용 (생성자가 1개인 경우 @Autowired 생략 가능)
-    /*@Autowired // new OrderServiceImpl(memberRepository, discountPolicy); -> 생성자는 bean 등록할 때 자동 주입이 일어남
+    @Autowired // new OrderServiceImpl(memberRepository, discountPolicy); -> 생성자는 bean 등록할 때 자동 주입이 일어남
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         System.out.println("OrderServiceImpl.OrderServiceImpl");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
-    }*/
+        // @Autowired 매칭 : 타입으로 매칭하는데, 여러 개가 조회됐을 때 파라미터 명(필드 명) 매칭
+        // @Qualifier 매칭 : 추가 구분자를 붙여주는 방법, @Qualifier끼리 매칭, 안되면 빈 이름으로 매칭(@Primary에 비해 우선순위 높음)
+        // @Primary 매칭 : 우선순위를 정한느 방법
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
