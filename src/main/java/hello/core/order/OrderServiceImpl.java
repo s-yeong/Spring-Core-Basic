@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderServiceImpl implements OrderService{
 
-    private final MemberRepository  memberRepository;
+    // final을 넣으면 초기값에서 넣거나 아니면 생성자에서만 값을 넣어줄 수 있음
+    private final MemberRepository memberRepository;
 //            = new MemoryMemberRepository();
 
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
@@ -28,6 +29,8 @@ public class OrderServiceImpl implements OrderService{
         this.discountPolicy = discountPolicy;
     }
 */
+
+
 /*
     @Autowired
     public void setMemberRepository(MemberRepository memberRepository) {
@@ -35,6 +38,7 @@ public class OrderServiceImpl implements OrderService{
         this.memberRepository = memberRepository;
     }
 */
+
     // 생성자 호출시점에 딱 1번만 호출, "불변, 필수" 의존관계에 사용 (생성자가 1개인 경우 @Autowired 생략 가능)
     @Autowired // new OrderServiceImpl(memberRepository, discountPolicy); -> 생성자는 bean 등록할 때 자동 주입이 일어남
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
