@@ -4,7 +4,7 @@ import hello.core.member.Grade;
 import hello.core.member.Member;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component  // 구현체에 Component 애노테이션 붙이기
 public class RateDiscountPolicy implements  DiscountPolicy{
 
     private int discountPercent = 10;

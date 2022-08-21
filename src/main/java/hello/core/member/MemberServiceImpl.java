@@ -13,6 +13,7 @@ public class MemberServiceImpl implements MemberService{
 
     private final MemberRepository memberRepository;
     @Autowired  // ac.getBean(MemberRepository.class)
+    // 이전에 AppConfig에서는 의존관계를 직접 명시했지만, 이제는 이런 설정 정보 자체가 없기 때문에, 이 클래스 안에서 해결
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

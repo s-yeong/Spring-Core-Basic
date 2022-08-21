@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 // 인터페이스 implements 해주기
-@Component
+@Component  // 구현체에 Component 애노테이션 붙이기
 public class MemoryMemberRepository implements MemberRepository{
     // 저장소니까 Map이 있어야함
     private static Map<Long, Member> store = new HashMap<>();
