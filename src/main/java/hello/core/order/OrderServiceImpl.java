@@ -20,8 +20,25 @@ public class OrderServiceImpl implements OrderService{
     private final DiscountPolicy discountPolicy;
     // 인터페이스에만 의존! - 추상화에만 의존
     // 해결 방법: 누군가 클라이언트인 OrderServiceImpl에 DiscountPolicy의 구현 객체를 대신 생성하고 주입해주어야한다.
+
+/*
+    @Autowired(required = false) // 선택적으로(주입할 대상이 없어도 동작)
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+        System.out.println("discountPolicy = " + discountPolicy);
+        this.discountPolicy = discountPolicy;
+    }
+*/
+/*
     @Autowired
+    public void setMemberRepository(MemberRepository memberRepository) {
+        System.out.println("memberRepository = " + memberRepository);
+        this.memberRepository = memberRepository;
+    }
+*/
+    // 생성자 호출시점에 딱 1번만 호출, "불변, 필수" 의존관계에 사용 (생성자가 1개인 경우 @Autowired 생략 가능)
+    @Autowired // new OrderServiceImpl(memberRepository, discountPolicy); -> 생성자는 bean 등록할 때 자동 주입이 일어남
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        System.out.println("OrderServiceImpl.OrderServiceImpl");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
