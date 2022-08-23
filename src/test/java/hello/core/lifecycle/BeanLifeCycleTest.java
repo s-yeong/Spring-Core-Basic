@@ -22,7 +22,7 @@ public class BeanLifeCycleTest {
     @Configuration
     static class LifyCycleConfig {
 
-        @Bean(initMethod = "init", destroyMethod = "close")   // 호출된 결과물이 스피링 빈으로 등록
+        @Bean   // 호출된 결과물이 스피링 빈으로 등록
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("http://hello-spring.dev"); // 객체를 생성한 다음 수정자 주입을 통해 url을 넣어줌
