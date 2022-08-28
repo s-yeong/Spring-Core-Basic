@@ -36,8 +36,8 @@ public class PrototypeTest {
         }
 
         @PreDestroy
-        public void destory() {
-            System.out.println("PrototypeBean.destory");
+        public void destroy() {
+            System.out.println("PrototypeBean.destroy");
         }
 
     }
