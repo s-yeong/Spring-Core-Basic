@@ -4,6 +4,9 @@ package hello.core.lifecycle;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+/**
+ * 외부 네트워크에 미리 연결하는 객체
+ */
 public class NetworkClient{
 
     private String url; // 접속해야할 서버 url

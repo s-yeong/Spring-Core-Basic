@@ -48,15 +48,16 @@ public class ApplicationContextSameBeanFindTest {
     @Configuration
     static class SameBeanConfig {
         // static의 장점은 클래스 안에 클래스를 썻다는것 - AppConfig 안에서만 쓰겠다
-
         @Bean
         public MemberRepository memberRepository1() {
             return new MemoryMemberRepository();
+            // 클래스 타입 동일
         }
 
         @Bean
         public MemberRepository memberRepository2() {
             return new MemoryMemberRepository();
+            // 클래스 타입 동일
         }
     }
 

@@ -16,17 +16,25 @@ public class OrderServiceImpl implements OrderService{
 
     // final을 넣으면 초기값에서 넣거나 아니면 생성자에서만 값을 넣어줄 수 있음
     private final MemberRepository memberRepository;
-//            = new MemoryMemberRepository();
+//    private final MemberRepository memberRepository = new MemoryMemberRepository();
 
+    /**
+     * 객체 지향 설계 원칙 DIP, OCP 위반
+     */
+    // befroe
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
-// DiscountPolicy에도 의존, FixDiscountPolicy도 의존 -> DIP 위반
+//    -> DiscountPolicy에 의존하지만, FixDiscountPolicy("구현체")도 의존 -> "DIP 위반"
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
-// RateDiscountPolicy로 변경하는 순간, OrderServiceImpl 소스코드도 변경해야함 -> OCP 위반
-    private final DiscountPolicy discountPolicy;
-    // 인터페이스에만 의존! - 추상화에만 의존
-    // 해결 방법: 누군가 클라이언트인 OrderServiceImpl에 DiscountPolicy의 구현 객체를 대신 생성하고 주입해주어야한다.
+//    RateDiscountPolicy로 변경하는 순간, OrderServiceImpl 소스코드도 "변경"해야함 -> "OCP 위반"
+
+    /**
+     * 해결 방법 : 누군가 클라이언트인 OrderServiceImpl에 DiscountPolicy의 구현 객체를 대신 생성하고 주입해주어야한다.
+     * => AppConfig
+     */
+    private final DiscountPolicy discountPolicy;    // 인터페이스(추상화)에만 의존
 
 /*
+    // 수정자 주입
     @Autowired(required = false) // 선택적으로(주입할 대상이 없어도 동작)
     public void setDiscountPolicy(DiscountPolicy discountPolicy) {
         System.out.println("discountPolicy = " + discountPolicy);

@@ -36,9 +36,11 @@ public class SingletonTest {
     @DisplayName("싱글톤 패턴을 적용한 객체 사용")
     void singletonServiceTest(){
 
+        // 조회 : 호출할 때 마다 "같은" 객체를 반환
         SingletonService singletonService1 = SingletonService.getInstance();
         SingletonService singletonService2 = SingletonService.getInstance();
 
+        /// 참조값이 같은 것을 확인
         System.out.println("singletonService1 = " + singletonService1);
         System.out.println("singletonService2 = " + singletonService2);
 

@@ -14,9 +14,9 @@ class ApplicationContextInfoTest {
     @Test
     @DisplayName("모든 빈 출력하기")
     void findAllBean(){
-        String[] beanDefinitionNames = ac.getBeanDefinitionNames();
+        String[] beanDefinitionNames = ac.getBeanDefinitionNames(); // 스프링에 등록된 모든 빈 이름 조회
         for (String beanDefinitionName : beanDefinitionNames) {
-            Object bean = ac.getBean(beanDefinitionName);
+            Object bean = ac.getBean(beanDefinitionName);   // 빈 이름으로 빈 객체(인스턴스)를 조회
             System.out.println("name = " + beanDefinitionName + " object = " + bean);
         }
 

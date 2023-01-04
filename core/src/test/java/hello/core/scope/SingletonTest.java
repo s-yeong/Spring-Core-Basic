@@ -1,6 +1,5 @@
 package hello.core.scope;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -14,7 +13,7 @@ public class SingletonTest {
 
 
     @Test
-    void singletonBeanfind() {
+    void singletonBeanFind() {
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(SingletonBean.class);
 
         SingletonBean singletonBean1 = ac.getBean(SingletonBean.class);

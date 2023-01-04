@@ -1,7 +1,6 @@
 package hello.core.lifecycle;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +10,7 @@ public class BeanLifeCycleTest {
 
     @Test
     public void lifeCycleTest() {
-        ConfigurableApplicationContext ac = new AnnotationConfigApplicationContext(LifyCycleConfig.class);
+        ConfigurableApplicationContext ac = new AnnotationConfigApplicationContext(LifeCycleConfig.class);
         NetworkClient client = ac.getBean(NetworkClient.class);
         ac.close(); // 스프링 컨테이너 종료
 
@@ -20,7 +19,7 @@ public class BeanLifeCycleTest {
 
 
     @Configuration
-    static class LifyCycleConfig {
+    static class LifeCycleConfig {
 
         @Bean   // 호출된 결과물이 스피링 빈으로 등록
         public NetworkClient networkClient() {

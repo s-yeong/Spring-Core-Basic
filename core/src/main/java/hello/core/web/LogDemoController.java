@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequiredArgsConstructor
 public class LogDemoController {
+// 로거가 잘 작동하는지 확인위한 테스트용 컨트롤러
 
     private final LogDemoService logDemoService;
     private final MyLogger myLogger;

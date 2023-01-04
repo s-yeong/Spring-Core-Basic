@@ -19,6 +19,9 @@ public class AutowiredTest {
 
     static class TestBean {
 
+        /**
+         * Member는 스프링 빈 X
+         */
         @Autowired(required = false)        // 의존관계가 없으면 메서드 호출 아예 X
         public void setNoBean1(Member noBean1) {
             System.out.println("noBean1 = " + noBean1);

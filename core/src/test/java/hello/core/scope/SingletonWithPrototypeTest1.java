@@ -17,7 +17,7 @@ public class SingletonWithPrototypeTest1 {
 
     @Test
     void prototypeFind() {
-
+        // 스프링 컨테이너에서 프로로타입 빈 직접 요청
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(PrototypeBean.class);
         PrototypeBean prototypeBean1 = ac.getBean(PrototypeBean.class);
         prototypeBean1.addCount();
@@ -62,8 +62,8 @@ public class SingletonWithPrototypeTest1 {
 
         public int logic() {
 
-            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();    // getObject 호출 시 그 때 스프링 컨테이너에서 해당 빈 찾아서 반환해줌
-//            PrototypeBean prototypeBean = prototypeBeanProvider.get();    // 라이브러리 추가해야함
+            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();    // getObject 호출 시 그 때 스프링 컨테이너에서 해당 빈 찾아서 반환해줌 => DL
+//            PrototypeBean prototypeBean = prototypeBeanProvider.get();    // build.gradle에서 라이브러리 추가해야함
             prototypeBean.addCount();
             int count = prototypeBean.getCount();
             return count;
